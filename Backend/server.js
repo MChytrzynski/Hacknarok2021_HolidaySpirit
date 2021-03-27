@@ -10,12 +10,7 @@ const NewsController = require("./app/controllers/news.controller");
 const TagsController = require("./app/controllers/tags.controller");
 const { Console } = require("console");
 
-const teet = async() => {
-  for (let i = 0; i < 10; i++) {
-    const _tag1 = await TagsController.findById(i);
-        console.log(JSON.stringify(_tag1, null, 2));
-  }
-  }
+
 const parse_news = () => {
   let rawdata = fs.readFileSync("data/response.json");
   let news_data = JSON.parse(rawdata);
@@ -54,7 +49,7 @@ const parse_news = () => {
 db.sequelize.sync({ force: true }).then(() => {
   console.log("Drop and re-sync db.");
   parse_news();
-  teet();
+ 
 });
 
 var corsOptions = {
@@ -71,7 +66,18 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to this application." });
+  //res.json({ message: "Welcome to this application." });
+  const teet = async() => {
+    let x = [];
+    for (let i = 0; i < 10; i++) {
+      const _tag1 = await TagsController.findById(i);
+          //console.log(JSON.stringify(_tag1, null, 2));
+          x[i] = _tag1;
+    }
+    res.json(x);
+    }
+    teet();
+  
 });
 
 require("./app/routes/news.routes")(app);
