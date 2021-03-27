@@ -24,7 +24,7 @@ const parse_news = () => {
         title: obj.title,
         description: obj.description,
         url: obj.url,
-        source: "portal",
+        source: obj.source.name,
         veracityAI: Math.floor(Math.random() * Math.floor(100)),
         veracityUser: Math.floor(Math.random() * Math.floor(100)),
         publishDate: obj.publishedAt,
