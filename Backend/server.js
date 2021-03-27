@@ -73,13 +73,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // simple route
 app.get("/", (req, res) => {
-  //res.json({ message: "Welcome to this application." });
   const teet = async() => {
     let x = [];
-    for (let i = 1; i < 10; i++) {
-      const _tag1 = await NewsController.findById(i);
-          //console.log(JSON.stringify(_tag1, null, 2));
-          x[i] = _tag1;
+    for (let i = 0; i < 10; ) {
+      const _tag1 = await NewsController.findById(i+1);
+         x[i] = _tag1;
+         i++
     }
     res.json(x);
     }
