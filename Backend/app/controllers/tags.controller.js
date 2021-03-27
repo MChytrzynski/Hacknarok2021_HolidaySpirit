@@ -8,7 +8,7 @@ exports.findAll = () => {
         {
           model: News,
           as: "news",
-          attributes: ["id", "title", "origin"],
+          attributes: ["id", "title"],
           through: {
             attributes: [],
           }
@@ -37,7 +37,7 @@ exports.findAll = () => {
           }
   
           tags.addNews(news);
-          console.log(`>> added News id=${news.id} to Tag id=${tags.id}`);
+         // console.log(`>> added News id=${news.id} to Tag id=${tags.id}`);
           return tags;
         });
       })
@@ -49,10 +49,10 @@ exports.findAll = () => {
 
   exports.create = (tags) => {
     return Tags.create({
-      name: tags.name,
+      tagname: tags.tagname,
     })
       .then((tags) => {
-        console.log(">> Created Tag: " + JSON.stringify(tags, null, 2));
+       // console.log(">> Created Tag: " + JSON.stringify(tags, null, 2));
         return tags;
       })
       .catch((err) => {

@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const fs = require('fs');
+const fs = require("fs");
 
 const app = express();
 
@@ -10,107 +10,52 @@ const NewsController = require("./app/controllers/news.controller");
 const TagsController = require("./app/controllers/tags.controller");
 const { Console } = require("console");
 
-const parse_news = () => {
-let rawdata = fs.readFileSync('data/response.json');
-let news_data = JSON.parse(rawdata);
-
-news_articles = news_data.articles;
-
-news_articles.forEach(obj => {
-  /*Object.entries(obj).forEach(([key, value]) => {
-      console.log(`${key} ${value}`);
-  });*/
-  console.log(obj.title);
-  let run = async () => {
-    let tut1 = await NewsController.create({
-      title: obj.title,
-      description: obj.description,
-      url: obj.url,
-      source: "portal",
-      veracityAI: null,
-      veracityUser: null,
-      publishDate: obj.publishedAt,
-    });
-    
-    let tag1 = await TagsController.create({
-      name: "Tag#1",
-    });
-    await TagsController.addNews(tag1.id, tut1.id);
+const teet = async() => {
+  for (let i = 0; i < 10; i++) {
+    const _tag1 = await TagsController.findById(i);
+        console.log(JSON.stringify(_tag1, null, 2));
   }
-  run();
-  console.log('-------------------');
+  }
+const parse_news = () => {
+  let rawdata = fs.readFileSync("data/response.json");
+  let news_data = JSON.parse(rawdata);
 
-});
-}
-
-/*const run = async () => {
-  const tut1 = await NewsController.create({
-    title: "#1",
-    description: "#1 Description",
-    url: "ses.eer",
-    source: "portal",
-    veracityAI: 54.22,
-    veracityUser: 99.44,
-    publishDate: "2017-06-15 09:34:21",
-  });
-  const tut2 = await NewsController.create({
-    title: "#2",
-    description: "#2 Description",
-    url: "ses.eer",
-    source: "portal",
-    veracityAI: 54.22,
-    veracityUser: 99.44,
-    publishDate: "2017-06-15 09:34:21",
-  });
-  const tut3 = await NewsController.create({
-    title: "#3",
-    description: "#3 Description",
-    url: "ses.eer",
-    source: "portal",
-    veracityAI: 54.22,
-    veracityUser: 99.44,
-    publishDate: "2017-06-15 09:34:21",
-  });
-  const tut4 = await NewsController.create({
-    title: "#4",
-    description: "#4 Description",
-    url: "ses.eer",
-    source: "portal",
-    veracityAI: null,
-    veracityUser: null,
-    publishDate: "2017-06-15 09:34:21",
-  });
-
-  const tag1 = await TagsController.create({
-    name: "Tag#1",
-  });
-
-  const tag2 = await TagsController.create({
-    name: "Tag#2",
-  });
-
-  await TagsController.addNews(tag1.id, tut1.id);
-
-  await TagsController.addNews(tag1.id, tut2.id);
-
-  await TagsController.addNews(tag1.id, tut3.id);
-
-  await TagsController.addNews(tag2.id, tut3.id);
-
-  await TagsController.addNews(tag2.id, tut4.id);
-
-  await TagsController.addNews(tag2.id, tut1.id);
-
-  const _tag1 = await TagsController.findById(tag1.id);
-  console.log(">> tag1", JSON.stringify(_tag1, null, 2));
+  news_articles = news_data.articles;
   
-};*/
+
+  news_articles.forEach((obj) => {
+    let run = async () => {
+      let tut1 = await NewsController.create({
+        title: obj.title,
+        description: obj.description,
+        url: obj.url,
+        source: "portal",
+        veracityAI: Math.floor(Math.random() * Math.floor(100)),
+        veracityUser: Math.floor(Math.random() * Math.floor(100)),
+        publishDate: obj.publishedAt,
+      });
+
+      let tag1 = await TagsController.create({
+        tagname: "Tag#1",
+      });
+      await TagsController.addNews(tag1.id, tut1.id);
+
+      
+    };
+    
+
+    run();
+    
+  });
+  
+};
+
 
 db.sequelize.sync({ force: true }).then(() => {
   console.log("Drop and re-sync db.");
   parse_news();
+  teet();
 });
-
 
 var corsOptions = {
   origin: "http://localhost:8081",

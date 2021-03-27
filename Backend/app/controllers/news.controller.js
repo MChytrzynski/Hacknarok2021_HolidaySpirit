@@ -48,7 +48,7 @@ const Op = db.Sequelize.Op;
       publishDate: news.publishDate,
     })
       .then((news) => {
-        console.log(">> Created News: ");
+        //console.log(">> Created News: ");
         return news;
       })
       .catch((err) => {
