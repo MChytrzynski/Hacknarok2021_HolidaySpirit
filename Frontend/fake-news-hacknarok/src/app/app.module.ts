@@ -9,6 +9,14 @@ import { MatButtonModule} from '@angular/material/button';
 import { NewsListComponent } from './news-list/news-list.component';
 import { NewsListItemComponent } from './news-list-item/news-list-item.component';
 import { NewsSettingsComponent } from './news-settings/news-settings.component';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatSliderModule} from '@angular/material/slider';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatInputModule} from '@angular/material/input';
+
+
+
 
 @NgModule({
   declarations: [
@@ -22,9 +30,14 @@ import { NewsSettingsComponent } from './news-settings/news-settings.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatChipsModule,
+    MatSliderModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule
   ],
-  providers: [],
+  providers: [MatDatepickerModule,MatNativeDateModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

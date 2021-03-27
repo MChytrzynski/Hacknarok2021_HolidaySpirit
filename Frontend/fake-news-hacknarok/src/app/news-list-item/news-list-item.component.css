@@ -2,9 +2,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  margin-left: 15%;
-  margin-top: 6%;
-  width: 70%;
+  margin-top: 1%;
   border-radius: 1.5vh;
   font-size: 20px;
   background: linear-gradient(to right, rgb(20, 30, 48), rgb(36, 59, 85));
