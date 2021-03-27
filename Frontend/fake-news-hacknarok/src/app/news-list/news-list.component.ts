@@ -12,6 +12,9 @@ export class NewsListComponent implements OnInit {
   loading:boolean=false;
   displayedNews:News[]=[];
   displayedTags:Tag[]=[];
+  selectedAuthenticity:number=50;
+  selectedSentiment:number=50;
+  selectedTags:string[]=[];
   constructor(public newsService:NewsServiceService) { }
   
   ngOnInit(): void {
@@ -34,6 +37,17 @@ export class NewsListComponent implements OnInit {
 
     },
     3000);
+  }
+  filterNews(){
+    this.displayedNews=this.newsService.localNews.filter(x=>{
+      if(x.veracityAI<this.selectedAuthenticity||x.veracityUser<this.selectedSentiment){
+        return false;
+      }
+      if(!this.selectedTags.some(tag=>x.tags.some(xTag=>xTag.tagname===tag))){
+        return false;
+      }
+      return true;
+    })
   }
 
 
