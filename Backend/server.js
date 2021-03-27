@@ -4,6 +4,9 @@ const cors = require("cors");
 
 const app = express();
 
+const db = require("./app/models");
+db.sequelize.sync();
+
 var corsOptions = {
   origin: "http://localhost:8081"
 };
@@ -20,6 +23,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to this application." });
 });
+
+require("./app/routes/news.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
