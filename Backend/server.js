@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const fs = require("fs");
+const axios = require('axios')
 
 const app = express();
 
@@ -9,7 +10,6 @@ const db = require("./app/models");
 const NewsController = require("./app/controllers/news.controller");
 const TagsController = require("./app/controllers/tags.controller");
 const { Console } = require("console");
-
 
 const parse_news = () => {
   let rawdata = fs.readFileSync("data/response.json");
@@ -25,6 +25,17 @@ const parse_news = () => {
 
   news_articles.forEach((obj) => {
     let run = async () => {
+        
+      axios.post('http://ddcfd668c902.ngrok.io/fakebox/check', {
+        title: obj.title,
+        content: obj.description
+      })
+      .then((response) => {
+        console.log(response.data.content);
+      }, (error) => {
+        console.log(error);
+      });
+
       let tut1 = await NewsController.create({
         title: obj.title,
         description: obj.description,
@@ -59,7 +70,7 @@ db.sequelize.sync({ force: true }).then(() => {
 });
 
 var corsOptions = {
-  origin: "http://localhost:8081",
+  origin: "http://localhost:8080",
 };
 
 app.use(cors(corsOptions));
@@ -74,7 +85,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
   const teet = async() => {
     let x = [];
-    for (let i = 0; i < 10; ) {
+    for (let i = 0; i < 3; ) {
       const _tag1 = await NewsController.findById(i+1);
          x[i] = _tag1;
          i++
