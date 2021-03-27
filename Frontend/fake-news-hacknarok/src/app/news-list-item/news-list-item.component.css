@@ -23,8 +23,10 @@
   line-height: 120%;
 }
 
-.mat-card-header {
+.header {
   padding-left: 1vh;
+  display: flex;
+  justify-content: space-between;
 }
 .Authenticity {
   padding: 1vh;
@@ -37,5 +39,5 @@
 .Ratings {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  justify-content: flex-start;
 }

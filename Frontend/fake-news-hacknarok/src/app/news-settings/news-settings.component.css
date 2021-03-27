@@ -1,41 +1,39 @@
-.fk-settings-card{
-    width: 18vw;
-    height: 32vh;
-    position:fixed;
-    top:0;
-    right: 0;
-    margin-top: 34vh;
-    margin-bottom: 34vh;
+.fk-settings-card {
+  width: 18vw;
+  height: 32vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin-top: 34vh;
+  margin-bottom: 34vh;
+  background: linear-gradient(to left, rgb(20, 30, 48), rgb(41, 66, 95));
+}
+mat-slider {
+  width: 17vw;
+}
+.fk-settings-title {
+  text-align: center;
+  margin-bottom: 3vh;
+}
 
-
+.fk-slider {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+  width: 18vw;
 }
-mat-slider{
-    width:17vw;
+.fk-date-label {
+  text-align: center;
+  margin-top: 3vh;
 }
-.fk-settings-title{
-    text-align: center;
-    margin-bottom: 3vh;
+.fk-slider-left-label {
+  display: inline;
+  margin-right: 14vw;
+  text-align: left;
 }
-
-.fk-slider{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-    align-items: center;
-    width: 18vw;
-}
-.fk-date-label{
-    text-align: center;
-    margin-top: 3vh;
-}
-.fk-slider-left-label{
-    display: inline;
-    margin-right: 14vw;
-    text-align: left;
-}
-.fk-slider-right-label{
-    display: inline;
-    text-align: right;
-
+.fk-slider-right-label {
+  display: inline;
+  text-align: right;
 }
