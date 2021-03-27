@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { News, Tag } from '../interfaces/news';
 import { NewsServiceService } from '../services/news-service.service';
 
 @Component({
@@ -9,10 +10,18 @@ import { NewsServiceService } from '../services/news-service.service';
 export class NewsListComponent implements OnInit {
   news:any[]=[1,1,1,1,1,1,1,1,1,1]
   loading:boolean=false;
+  displayedNews:News[]=[];
+  displayedTags:Tag[]=[];
   constructor(public newsService:NewsServiceService) { }
   
   ngOnInit(): void {
-    this.newsService.getNews().subscribe(x=>console.log(x));
+    this.newsService.getNews().subscribe(x=>{
+      this.newsService.localNews=x;
+      this.newsService.setTags();
+      this.displayedTags=this.newsService.tags;
+      this.displayedNews=x;
+      console.log(this.displayedNews)
+    });
   }
   onScroll(){
     this.loading=true;
@@ -25,7 +34,7 @@ export class NewsListComponent implements OnInit {
 
     },
     3000);
-    
   }
+
 
 }

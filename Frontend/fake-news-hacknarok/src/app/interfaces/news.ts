@@ -3,16 +3,15 @@ export interface News {
     tags:Tag[],
     createdAt:string,
     updatedAt:string,
-    news:NewsContent
-}
-export interface NewsContent{
-    id:number,
+    publishDate:string,
+    url:string,
     title:string,
     description:string,
     source:string,
     veracityAI:number,
     veracityUser:number
 }
+
 export interface Tag{
     id:number,
     tagname:string
