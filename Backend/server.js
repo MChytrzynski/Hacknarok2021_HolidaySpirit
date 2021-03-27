@@ -5,11 +5,6 @@ const fs = require("fs");
 const axios = require('axios')
 
 const app = express();
-const corsOptions = {
-  origin: ['http://localhost:4200'],
-  credentials: true,
-}
-app.use(cors(corsOptions))
 
 const db = require("./app/models");
 const NewsController = require("./app/controllers/news.controller");
@@ -74,13 +69,7 @@ db.sequelize.sync({ force: true }).then(() => {
  
 });
 
-<<<<<<< HEAD
-var corsOptions = {
-  origin: "http://localhost:8080",
-};
-=======
->>>>>>> 9ecb258221cf48810e6768ca7345dd4ddcff6ee2
-
+app.use(cors(corsOptions));
 
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
