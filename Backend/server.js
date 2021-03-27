@@ -8,20 +8,40 @@ const app = express();
 const db = require("./app/models");
 const NewsController = require("./app/controllers/news.controller");
 const TagsController = require("./app/controllers/tags.controller");
+const { Console } = require("console");
 
+const parse_news = () => {
 let rawdata = fs.readFileSync('data/response.json');
 let news_data = JSON.parse(rawdata);
 
 news_articles = news_data.articles;
 
 news_articles.forEach(obj => {
-  Object.entries(obj).forEach(([key, value]) => {
+  /*Object.entries(obj).forEach(([key, value]) => {
       console.log(`${key} ${value}`);
-  });
+  });*/
+  console.log(obj.title);
+  let run = async () => {
+    let tut1 = await NewsController.create({
+      title: obj.title,
+      description: obj.description,
+      url: obj.url,
+      source: "portal",
+      veracityAI: null,
+      veracityUser: null,
+      publishDate: obj.publishedAt,
+    });
+    
+    let tag1 = await TagsController.create({
+      name: "Tag#1",
+    });
+    await TagsController.addNews(tag1.id, tut1.id);
+  }
+  run();
   console.log('-------------------');
+
 });
-
-
+}
 
 /*const run = async () => {
   const tut1 = await NewsController.create({
@@ -88,7 +108,7 @@ news_articles.forEach(obj => {
 
 db.sequelize.sync({ force: true }).then(() => {
   console.log("Drop and re-sync db.");
-  //run();
+  parse_news();
 });
 
 
