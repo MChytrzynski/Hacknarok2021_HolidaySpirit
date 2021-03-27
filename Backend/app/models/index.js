@@ -20,5 +20,18 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.news = require("./news.model.js")(sequelize, Sequelize);
+db.tags = require("./tags.model.js")(sequelize, Sequelize);
+
+db.tags.belongsToMany(db.news, {
+  through: "news_tag",
+  as: "news",
+  foreignKey: "tag_id",
+});
+db.news.belongsToMany(db.tags, {
+  through: "news_tag",
+  as: "tags",
+  foreignKey: "news_id",
+});
+
 
 module.exports = db;

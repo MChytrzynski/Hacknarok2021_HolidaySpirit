@@ -1,9 +1,10 @@
 const db = require("../models");
 const News = db.news;
+const Tags = db.tags;
 const Op = db.Sequelize.Op;
 
 // Create and Save
-exports.create = (req, res) => {
+/*exports.create = (req, res) => {
     // Validate request
     if (!req.body.title) {
       res.status(400).send({
@@ -34,14 +35,43 @@ exports.create = (req, res) => {
             err.message || "Some error occurred while creating the record."
         });
       });
+  };*/
+
+  exports.create = (news) => {
+    return News.create({
+      title: news.title,
+      content: news.content,
+      url: news.url,
+      origin: news.origin,
+      veracityAI: news.veracityAI,
+      veracityUser: news.veracityUser,
+      publishDate: news.publishDate,
+    })
+      .then((news) => {
+        console.log(">> Created News: ");
+        return news;
+      })
+      .catch((err) => {
+        console.log(">> Error while creating News: ", err);
+      });
   };
 
 // Retrieve all 
 exports.findAll = (req, res) => {
-    const title = req.query.title;
-    var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
   
-    News.findAll({ where: condition })
+    News.findAll({include: [
+      {
+        model: Tags,
+        as: "tags",
+        attributes: ["id", "name"],
+        through: {
+          attributes: [],
+        },
+        // through: {
+        //   attributes: ["tag_id", "tutorial_id"],
+        // },
+      },
+    ], })
       .then(data => {
         res.send(data);
       })
