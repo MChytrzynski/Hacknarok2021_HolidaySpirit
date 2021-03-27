@@ -1,6 +1,42 @@
-
-  
-  .example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-    background-size: cover;
+.newsItem {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 1%;
+    border-radius: 1.5vh;
+    font-size: 20px;
+    background: linear-gradient(to right, rgb(20, 30, 48), rgb(36, 59, 85));
   }
+  .mat-card-title {
+    font-size: 36px;
+    padding: 1vh;
+  }
+  .mat-card-subtitle {
+    font-size: 20px;
+    padding: 1vh;
+}
+  .mat-card-content {
+    font-size: 20px;
+    padding-left: 3vh;
+    padding-right: 3vh;
+    padding-bottom: 3vh;
+    line-height: 120%;
+  }
+  
+  .mat-card-header {
+    padding-left: 1vh;
+  }
+  .Authenticity {
+    padding: 1vh;
+    color: #eeb76b;
+  }
+  .Sentiment {
+    padding: 1vh;
+    color: #9c3d54;
+  }
+  .Ratings {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
