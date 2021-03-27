@@ -10,6 +10,8 @@
 .mat-card-title {
   font-size: 36px;
   padding: 1vh;
+  line-height: 120%;
+  color: #fde8cd;
 }
 .mat-card-subtitle {
   font-size: 20px;
@@ -17,7 +19,7 @@
 }
 .mat-card-content {
   font-size: 20px;
-  padding-left: 3vh;
+  padding-left: 5vh;
   padding-right: 3vh;
   padding-bottom: 3vh;
   line-height: 120%;
@@ -41,4 +43,22 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+}
+a:link {
+  color: #dbf6e9;
+}
+
+/* visited link */
+a:visited {
+  color: #dbf6e9;
+}
+
+/* mouse over link */
+a:hover {
+  color: #ffc93c;
+}
+
+/* selected link */
+a:active {
+  color: blue;
 }

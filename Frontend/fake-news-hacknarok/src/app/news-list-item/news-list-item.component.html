@@ -4,7 +4,8 @@
 
       <div>
       <mat-card-title>{{newsInput.title}}</mat-card-title>
-      <mat-card-subtitle>News source: {{newsInput.url}}</mat-card-subtitle>
+      <mat-card-subtitle>News source: <a href={{newsInput.url}}>{{newsInput.url}}</a></mat-card-subtitle>
+      <mat-card-subtitle>News data: {{newsInput.data}}</mat-card-subtitle>
     </div>
     <div class = "Ratings">
     <div class="Authenticity"> Authenticity: <b>{{newsInput.veracityAI}}</b></div>
