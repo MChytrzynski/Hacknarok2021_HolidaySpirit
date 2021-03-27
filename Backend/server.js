@@ -16,7 +16,12 @@ const parse_news = () => {
   let news_data = JSON.parse(rawdata);
 
   news_articles = news_data.articles;
-  
+  TagsController.create({
+    tagname: "Tag#1",
+  });
+  TagsController.create({
+    tagname: "Tag#2",
+  });
 
   news_articles.forEach((obj) => {
     let run = async () => {
@@ -30,10 +35,11 @@ const parse_news = () => {
         publishDate: obj.publishedAt,
       });
 
-      let tag1 = await TagsController.create({
-        tagname: "Tag#1",
-      });
-      await TagsController.addNews(tag1.id, tut1.id);
+
+      
+      await TagsController.addNews(1, tut1.id);
+      await TagsController.addNews(2, tut1.id);
+
 
       
     };
@@ -69,8 +75,8 @@ app.get("/", (req, res) => {
   //res.json({ message: "Welcome to this application." });
   const teet = async() => {
     let x = [];
-    for (let i = 0; i < 10; i++) {
-      const _tag1 = await TagsController.findById(i);
+    for (let i = 1; i < 10; i++) {
+      const _tag1 = await NewsController.findById(i);
           //console.log(JSON.stringify(_tag1, null, 2));
           x[i] = _tag1;
     }
