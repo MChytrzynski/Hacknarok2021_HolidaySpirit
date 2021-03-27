@@ -14,6 +14,8 @@ import {MatSliderModule} from '@angular/material/slider';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 
@@ -35,7 +37,9 @@ import {MatInputModule} from '@angular/material/input';
     MatSliderModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatInputModule
+    MatInputModule,
+    InfiniteScrollModule,
+    MatProgressSpinnerModule
   ],
   providers: [MatDatepickerModule,MatNativeDateModule],
   bootstrap: [AppComponent]
