@@ -8,8 +8,9 @@ import { News } from '../interfaces/news';
 export class NewsServiceService {
 
 constructor(public httpClient:HttpClient) { }
-
+public localNews:News[]=[];
 getNews():Observable<News[]>{
     return this.httpClient.get<News[]>('http://localhost:8080/')
   }
+
 }

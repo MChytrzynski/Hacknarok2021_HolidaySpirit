@@ -4,6 +4,11 @@ const cors = require("cors");
 const fs = require("fs");
 
 const app = express();
+const corsOptions = {
+  origin: ['http://localhost:4200'],
+  credentials: true,
+}
+app.use(cors(corsOptions))
 
 const db = require("./app/models");
 const NewsController = require("./app/controllers/news.controller");
@@ -58,11 +63,7 @@ db.sequelize.sync({ force: true }).then(() => {
  
 });
 
-var corsOptions = {
-  origin: "http://localhost:8081",
-};
 
-app.use(cors(corsOptions));
 
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
