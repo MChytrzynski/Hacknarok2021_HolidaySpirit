@@ -16,6 +16,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { NewsServiceService } from './services/news-service.service';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 
@@ -39,9 +42,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatNativeDateModule,
     MatInputModule,
     InfiniteScrollModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    HttpClientModule
   ],
-  providers: [MatDatepickerModule,MatNativeDateModule],
+  providers: [MatDatepickerModule,MatNativeDateModule,NewsServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

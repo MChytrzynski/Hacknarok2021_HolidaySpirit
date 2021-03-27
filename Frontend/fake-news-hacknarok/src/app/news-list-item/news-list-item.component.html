@@ -1,22 +1,21 @@
-<mat-card class="newsItem">
+<mat-card class="newsItem" *ngIf="newsInput">
     <mat-card-header>
         <div class='header'>
 
       <div>
-      <mat-card-title>news Tiasdasdasdasasddasdastle</mat-card-title>
-      <mat-card-subtitle>News source: source.com</mat-card-subtitle>
+      <mat-card-title>{{newsInput.title}}</mat-card-title>
+      <mat-card-subtitle>News source: {{newsInput.url}}</mat-card-subtitle>
     </div>
     <div class = "Ratings">
-    <div class="Authenticity"> Authenticity: <b>21%</b></div>
-    <div class="Sentiment">Sentiment: <b>37%</b></div>
+    <div class="Authenticity"> Authenticity: <b>{{newsInput.veracityAI}}</b></div>
+    <div class="Sentiment">Sentiment: <b>{{newsInput.veracityUser}}</b></div>
     </div>
     </div>
 
   </mat-card-header>
     <mat-card-content>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce porttitor ullamcorper nulla, vel blandit enim laoreet vel. Nullam mauris ipsum, cursus sed commodo non, aliquet lobortis dui. Sed at neque pellentesque, volutpat dui ac, placerat risus. Vivamus condimentum consequat velit sed sagittis. Nam euismod dui et risus fermentum, rutrum feugiat quam congue. Etiam ac consequat lectus, ut sollicitudin sapien. Morbi vel diam eu leo venenatis condimentum. Ut purus elit, pulvinar vitae sem quis, sollicitudin molestie tortor. Fusce consequat erat ut luctus consectetur.Aliquam odio turpis, congue ut gravida in, condimentum vel augue. Cras at efficitur tellus. Duis elementum nisi erat, vel cursus erat lobortis pellentesque. Nam eget elit a sem gravida venenatis non in ligula. Etiam pulvinar finibus odio nec interdum. Integer quis libero lobortis, pretium odio dapibus, ullamcorper magna. Vestibulum malesuada eleifend enim nec tincidunt. Phasellus pellentesque lorem eros, at tristique urna mollis ut. Sed nec tincidunt diam. Vestibulum vel neque eleifend, volutpat est non, scelerisque mauris. Mauris id semper risus. Morbi magna ex, pellentesque et erat nec, imperdiet tristique ipsum. Maecenas sagittis sodales purus, nec blandit nulla elementum id. Integer metus erat, rutrum non aliquam ac, porttitor vel nulla. Cras id massa ut nisl elementum consequat. Proin id lacus vel sapien porta pulvinar.Suspendisse nec augue nec ante tempus faucibus nec eu nisl. Curabitur aliquam et quam nec faucibus. Mauris nisl ex, lacinia ut vulputate quis, ultrices sed risus. 
-      </p>
-      <p>Fusce consequat fermentum ornare. Suspendisse auctor sem eu odio sodales, vitae gravida nulla suscipit. Donec enim lorem, gravida id fringilla nec, fringilla id orci. Curabitur ornare, erat in bibendum congue, eros velit varius ipsum, et ornare mi sem dignissim massa.Pellentesque finibus interdum neque ut commodo. In fermentum mi nibh, sit amet viverra lacus condimentum quis. Praesent ut diam a mi aliquet consequat. Fusce cursus porttitor nunc ut dapibus. Curabitur pellentesque, lectus sit amet hendrerit hendrerit, ligula augue accumsan dolor, id semper est erat et dolor. Mauris dignissim, quam eu lacinia ultrices, orci velit tincidunt diam, sed rhoncus leo ligula quis orci. Sed gravida turpis ut orci blandit, sed venenatis tellus convallis. Pellentesque malesuada, augue ut maximus venenatis, arcu nunc porttitor augue, vel bibendum velit elit ultrices tellus. Duis sit amet quam scelerisque, venenatis augue ultricies, condimentum ipsum. Nullam nec nisi in est consectetur imperdiet nec id lorem. Suspendisse ultricies, velit eu sagittis hendrerit, metus odio consequat ligula, a ornare magna purus vel lorem.In ac neque blandit, posuere sem vitae, vulputate ipsum. Pellentesque quis ex vel diam pretium tempor. Nullam quis felis facilisis, consequat sem quis, hendrerit est. Etiam finibus est lacus, ac varius turpis consectetur venenatis. Phasellus ultricies lacus in turpis hendrerit, et hendrerit odio congue. Morbi placerat sagittis dignissim. Maecenas maximus tincidunt nulla nec dignissim. Aenean mauris tellus, porttitor vitae justo sed, pharetra pulvinar neque. Fusce ut purus sed mauris rutrum tincidunt ut a arcu. Sed urna urna, aliquet sed quam sed, dignissim consequat tortor. Nunc vitae viverra urna, quis condimentum tortor. Etiam justo eros, tincidunt vitae vehicula tincidunt, sodales sit amet elit. Fusce malesuada porta ipsum, vitae bibendum mi gravida et. Proin ex lacus, facilisis vel mattis nec, ultrices hendrerit velit.</p>
+        {{newsInput.description}}    
+    </p>
     </mat-card-content>
   </mat-card>
