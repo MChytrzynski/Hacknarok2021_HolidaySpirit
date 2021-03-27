@@ -3,13 +3,13 @@ module.exports = (sequelize, Sequelize) => {
       title: {
         type: Sequelize.STRING
       },
-      content: {
+      description: {
         type: Sequelize.TEXT
       },
       url: {
         type: Sequelize.STRING
       },
-      origin: {
+      source: {
         type: Sequelize.STRING
       },
       veracityAI: {

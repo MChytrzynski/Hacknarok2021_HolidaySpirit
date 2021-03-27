@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const fs = require('fs');
 
 const app = express();
 
@@ -8,41 +9,55 @@ const db = require("./app/models");
 const NewsController = require("./app/controllers/news.controller");
 const TagsController = require("./app/controllers/tags.controller");
 
-const run = async () => {
+let rawdata = fs.readFileSync('data/response.json');
+let news_data = JSON.parse(rawdata);
+
+news_articles = news_data.articles;
+
+news_articles.forEach(obj => {
+  Object.entries(obj).forEach(([key, value]) => {
+      console.log(`${key} ${value}`);
+  });
+  console.log('-------------------');
+});
+
+
+
+/*const run = async () => {
   const tut1 = await NewsController.create({
     title: "#1",
-    content: "#1 Description",
+    description: "#1 Description",
     url: "ses.eer",
-    origin: "portal",
+    source: "portal",
     veracityAI: 54.22,
     veracityUser: 99.44,
     publishDate: "2017-06-15 09:34:21",
   });
   const tut2 = await NewsController.create({
     title: "#2",
-    content: "#2 Description",
+    description: "#2 Description",
     url: "ses.eer",
-    origin: "portal",
+    source: "portal",
     veracityAI: 54.22,
     veracityUser: 99.44,
     publishDate: "2017-06-15 09:34:21",
   });
   const tut3 = await NewsController.create({
     title: "#3",
-    content: "#3 Description",
+    description: "#3 Description",
     url: "ses.eer",
-    origin: "portal",
+    source: "portal",
     veracityAI: 54.22,
     veracityUser: 99.44,
     publishDate: "2017-06-15 09:34:21",
   });
   const tut4 = await NewsController.create({
     title: "#4",
-    content: "#4 Description",
+    description: "#4 Description",
     url: "ses.eer",
-    origin: "portal",
-    veracityAI: 54.22,
-    veracityUser: 99.44,
+    source: "portal",
+    veracityAI: null,
+    veracityUser: null,
     publishDate: "2017-06-15 09:34:21",
   });
 
@@ -69,11 +84,11 @@ const run = async () => {
   const _tag1 = await TagsController.findById(tag1.id);
   console.log(">> tag1", JSON.stringify(_tag1, null, 2));
   
-};
+};*/
 
 db.sequelize.sync({ force: true }).then(() => {
   console.log("Drop and re-sync db.");
-  run();
+  //run();
 });
 
 

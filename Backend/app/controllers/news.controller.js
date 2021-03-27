@@ -16,9 +16,9 @@ const Op = db.Sequelize.Op;
     // Create a News
     const news = {
       title: req.body.title,
-      content: req.body.content,
+      description: req.body.description,
       url: req.body.url,
-      origin: req.body.origin,
+      source: req.body.source,
       veracityAI: req.body.veracityAI,
       veracityUser: req.body.veracityUser,
       publishDate: req.body.publishDate,      
@@ -40,9 +40,9 @@ const Op = db.Sequelize.Op;
   exports.create = (news) => {
     return News.create({
       title: news.title,
-      content: news.content,
+      description: news.description,
       url: news.url,
-      origin: news.origin,
+      source: news.source,
       veracityAI: news.veracityAI,
       veracityUser: news.veracityUser,
       publishDate: news.publishDate,

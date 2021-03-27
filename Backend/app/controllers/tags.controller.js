@@ -66,7 +66,7 @@ exports.findAll = () => {
         {
           model: News,
           as: "news",
-          attributes: ["id", "title", "content"],
+          attributes: ["id", "title", "description"],
           through: {
             attributes: [],
           }
