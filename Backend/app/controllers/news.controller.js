@@ -63,7 +63,7 @@ exports.findAll = (req, res) => {
       {
         model: Tags,
         as: "tags",
-        attributes: ["id", "name"],
+        attributes: ["id", "tagname"],
         through: {
           attributes: [],
         },
@@ -83,11 +83,27 @@ exports.findAll = (req, res) => {
       });
   };
 
-/*// Find a single element
-exports.findOne = (req, res) => {
-  
-};
-
+  exports.findById = (id) => {
+    return News.findByPk(id, {
+      include: [
+        {
+          model: Tags,
+          as: "tags",
+          attributes: ["id", "tagname"],
+          through: {
+            attributes: [],
+          }
+        },
+      ],
+    })
+      .then((news) => {
+        return news;
+      })
+      .catch((err) => {
+        console.log(">> Error while finding News: ", err);
+      });
+  };
+/*
 // Update by id in the request
 exports.update = (req, res) => {
   
