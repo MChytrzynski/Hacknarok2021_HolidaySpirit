@@ -28,12 +28,12 @@ export class NewsListComponent implements OnInit {
       this.displayedNews.map(y=>y.url='https://'+y.title.toLowerCase().replace(' ','.'));
       var today = new Date() as any;
       var dd = String(today.getDate()).padStart(2, '0');
-      var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+      var mm = String(today.getMonth() + 1).padStart(2, '0');
       var yyyy = today.getFullYear();
-
       today = mm + '/' + dd + '/' + yyyy;
       console.log(today);
       this.displayedNews.map(x=>x.publishDate=today);
+      this.displayedNews.map(x=>x.veracityAI=Math.round(x.veracityAI*10)/10);
       this.newsService.localNews=this.displayedNews;
       this.newsService.setTags();
       this.displayedTags=this.newsService.tags;
