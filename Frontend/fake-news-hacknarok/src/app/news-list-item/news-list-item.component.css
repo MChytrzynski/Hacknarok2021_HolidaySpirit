@@ -64,3 +64,9 @@ a:hover {
 a:active {
   color: blue;
 }
+.material-icons {
+  padding: 1vh;
+}
+.Thumbs {
+  padding-left: 1vh;
+}
