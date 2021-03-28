@@ -80,3 +80,19 @@ exports.findAll = () => {
         console.log(">> Error while finding Tag: ", err);
       });
   };
+
+
+  exports.findByName = (name) => {
+    return Tags.findAll({
+      where:{
+        tagname: name
+      }
+    })
+      .then((tags) => {
+        return tags;
+      })
+      .catch((err) => {
+        console.log(">> Error while finding Tag: ", err);
+      });
+  };
+
