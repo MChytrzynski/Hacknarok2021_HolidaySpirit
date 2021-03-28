@@ -21,21 +21,10 @@ const parse_news = () => {
   let rawdata = fs.readFileSync("data/response.json");
   let news_data = JSON.parse(rawdata);
 
-  let news_articles = news_data.articles;
+  let news_articles = news_data;
 
   news_articles.forEach((obj) => {
-   /* let run = async () => {
-      let tut1 = await NewsController.create({
-        title: obj.title,
-        description: obj.content,
-        url: obj.url,
-        source: obj.source.name,
-        veracityAI: Math.floor(Math.random() * Math.floor(100)),
-        veracityUser: Math.floor(Math.random() * Math.floor(100)),
-        publishDate: obj.publishedAt,
-      }); */
-
-      axios
+        axios
         .post("http://eca20c80a8d3.ngrok.io/fakebox/check", {
           title: obj.title,
           content: obj.content,
@@ -52,13 +41,13 @@ const parse_news = () => {
                 description: obj.content,
                 url: obj.url,
                 source: obj.source.name,
-                veracityAI: response.data.title.score*100,
+                veracityAI: response.data.content.score*100,
                 veracityUser: Math.floor(Math.random() * Math.floor(100)),
                 publishDate: obj.publishedAt,
               }); 
         
             keywords.forEach((word) => {
-              //console.log(word.keyword);
+              
               (async () => {
                 let exist_tag = await TagsController.findByName(word.keyword);
                 if (exist_tag == "") {
@@ -80,14 +69,13 @@ const parse_news = () => {
             console.log(error);
           }
         );
-    
+          
 
   });
 };  
 
-db.sequelize.sync({ force: true }).then(() => {
-  console.log("Drop and re-sync db.");
-  parse_news();
+db.sequelize.sync().then(() => {
+  //parse_news();
 });
 
 // parse requests of content-type - application/json
@@ -100,7 +88,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
   const teet = async () => {
     let x = [];
-    for (let i = 0; i < 3; ) {
+    for (let i = 0; i < 200; ) {
       const _tag1 = await NewsController.findById(i + 1);
       x[i] = _tag1;
       i++;
