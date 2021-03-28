@@ -6,8 +6,6 @@
         <mat-chip [class.mat-chip-selected]="isChipSelected(tag.tagname)" (click)="toggleChipSelection(tag.tagname)" *ngFor="let tag of displayedTags" color="accent" >{{tag.tagname}}</mat-chip>
       </mat-chip-list>
     <app-news-list-item *ngFor="let news of displayedNews"  [newsInput]="news"></app-news-list-item>
-    <mat-spinner class="chips" *ngIf="loading"></mat-spinner>
-
 </span>
 <span #intro class="fk-intro-page">
     <h1 class="fk-title">
