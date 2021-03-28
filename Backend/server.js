@@ -24,26 +24,39 @@ const parse_news = () => {
   let news_articles = news_data.articles;
 
   news_articles.forEach((obj) => {
-    let run = async () => {
+   /* let run = async () => {
       let tut1 = await NewsController.create({
         title: obj.title,
-        description: obj.description,
+        description: obj.content,
         url: obj.url,
         source: obj.source.name,
         veracityAI: Math.floor(Math.random() * Math.floor(100)),
         veracityUser: Math.floor(Math.random() * Math.floor(100)),
         publishDate: obj.publishedAt,
-      });
+      }); */
 
       axios
-        .post("http://ddcfd668c902.ngrok.io/fakebox/check", {
+        .post("http://eca20c80a8d3.ngrok.io/fakebox/check", {
           title: obj.title,
-          content: obj.description,
+          content: obj.content,
         })
         .then(
           (response) => {
             //console.log(response.data.content.keywords);
             keywords = response.data.content.keywords;
+            
+            //console.log(response.data.title.score);
+            let run = async () => {
+              let tut1 = await NewsController.create({
+                title: obj.title,
+                description: obj.content,
+                url: obj.url,
+                source: obj.source.name,
+                veracityAI: response.data.title.score*100,
+                veracityUser: Math.floor(Math.random() * Math.floor(100)),
+                publishDate: obj.publishedAt,
+              }); 
+        
             keywords.forEach((word) => {
               //console.log(word.keyword);
               (async () => {
@@ -59,14 +72,16 @@ const parse_news = () => {
                 }
               })();
             });
+          };
+          
+    run();
           },
           (error) => {
             console.log(error);
           }
         );
-    };
+    
 
-    run();
   });
 };  
 
