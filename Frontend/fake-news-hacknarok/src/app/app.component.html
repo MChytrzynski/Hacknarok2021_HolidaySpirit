@@ -1,2 +1,2 @@
-<app-news-settings></app-news-settings>
-<app-news-list></app-news-list>
+<app-news-settings (authenticitySliderChanged)="authChanged($event)"></app-news-settings>
+<app-news-list [sliderValue]="sliderSelectedValue"></app-news-list>

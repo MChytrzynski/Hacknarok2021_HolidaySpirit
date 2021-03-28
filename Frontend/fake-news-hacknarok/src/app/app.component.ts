@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'fake-news-hacknarok';
+  sliderSelectedValue=50;
+  authChanged(e){
+    this.sliderSelectedValue=e;
+  }
 }
