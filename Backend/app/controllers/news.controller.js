@@ -3,40 +3,6 @@ const News = db.news;
 const Tags = db.tags;
 const Op = db.Sequelize.Op;
 
-// Create and Save
-/*exports.create = (req, res) => {
-    // Validate request
-    if (!req.body.title) {
-      res.status(400).send({
-        message: "Content can not be empty!"
-      });
-      return;
-    }
-  
-    // Create a News
-    const news = {
-      title: req.body.title,
-      description: req.body.description,
-      url: req.body.url,
-      source: req.body.source,
-      veracityAI: req.body.veracityAI,
-      veracityUser: req.body.veracityUser,
-      publishDate: req.body.publishDate,      
-    };
-  
-    // Save element in the database
-    News.create(news)
-      .then(data => {
-        res.send(data);
-      })
-      .catch(err => {
-        res.status(500).send({
-          message:
-            err.message || "Some error occurred while creating the record."
-        });
-      });
-  };*/
-
   exports.create = (news) => {
     return News.create({
       title: news.title,
@@ -44,8 +10,7 @@ const Op = db.Sequelize.Op;
       url: news.url,
       source: news.source,
       veracityAI: news.veracityAI,
-      veracityUser: news.veracityUser,
-      publishDate: news.publishDate,
+      veracityUser: news.veracityUser
     })
       .then((news) => {
         //console.log(">> Created News: ");

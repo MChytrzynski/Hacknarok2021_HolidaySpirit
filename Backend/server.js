@@ -21,7 +21,7 @@ const parse_news = () => {
   let rawdata = fs.readFileSync("data/response.json");
   let news_data = JSON.parse(rawdata);
 
-  news_articles = news_data.articles;
+  let news_articles = news_data.articles;
 
   news_articles.forEach((obj) => {
     let run = async () => {
@@ -51,13 +51,11 @@ const parse_news = () => {
                 if (exist_tag == "") {
                   let tag1 = await TagsController.create({ tagname: word.keyword });
                   await TagsController.addNews(tag1.id, tut1.id);
-                  console.log("------------------------");
                 } else {
                   await TagsController.addNews(
                     exist_tag[0].dataValues.id,
                     tut1.id
                   );
-                  console.log("XXXXXXXX");
                 }
               })();
             });
