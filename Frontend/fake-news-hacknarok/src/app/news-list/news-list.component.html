@@ -1,8 +1,26 @@
 <span class="fk-list-container">
+    <h1 class="fk-list-title">
+        FAKE REAPER
+    </h1>
     <mat-chip-list *ngIf="displayedTags" [selectable]="true" class="chips">
-        <mat-chip  class="fk-keyword-chip" *ngFor="let tag of displayedTags" color="accent" >{{tag.tagname}}</mat-chip>
+        <mat-chip [class.mat-chip-selected]="isChipSelected(tag.tagname)" (click)="toggleChipSelection(tag.tagname)" *ngFor="let tag of displayedTags" color="accent" >{{tag.tagname}}</mat-chip>
       </mat-chip-list>
     <app-news-list-item *ngFor="let news of displayedNews"  [newsInput]="news"></app-news-list-item>
     <mat-spinner class="chips" *ngIf="loading"></mat-spinner>
+
+</span>
+<span #intro class="fk-intro-page">
+    <h1 class="fk-title">
+        FAKE REAPER
+    </h1>
+    <h2 class="fk-subtitle">
+        Choose topics that you are interested in
+    </h2>
+    <span class="fk-chips-contaier">
+        <mat-chip-list *ngIf="displayedTags" [selectable]="true" class="chips">
+            <mat-chip [class.mat-chip-selected]="isChipSelected(tag.tagname)" (click)="toggleChipSelection(tag.tagname)" *ngFor="let tag of displayedTags" color="accent" >{{tag.tagname}}</mat-chip>
+          </mat-chip-list>
+    </span>
+    <button (click)="removeIntro(intro)" class="fk-start-button" mat-button color="accent">START READING</button>
 
 </span>
