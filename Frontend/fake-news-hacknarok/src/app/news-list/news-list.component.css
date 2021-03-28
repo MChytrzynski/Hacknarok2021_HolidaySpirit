@@ -1,20 +1,20 @@
-.fk-list-container{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-    align-items: flex-start;
-    margin-left: 5vh;
-    width: 75vw;
-    margin-top: 2vh;
+.fk-list-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: flex-start;
+  margin-left: 5vh;
+  width: 75vw;
+  padding-top: 70px;
 }
-.mat-standard-chip{
-    min-height: 23px;
+.mat-standard-chip {
+  min-height: 35px;
 }
-app-news-list-item{
-    margin:1vh;
+app-news-list-item {
+  margin: 1vh;
 }
-.chips{
-    align-self: center;
-    margin: 1vh;
+.chips {
+  align-self: center;
+  margin: 1vh;
 }

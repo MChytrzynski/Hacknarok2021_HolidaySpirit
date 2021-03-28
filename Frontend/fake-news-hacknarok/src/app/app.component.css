@@ -1,3 +1,18 @@
 .example-card {
   max-width: 400px;
 }
+/* Style the header */
+.header {
+  background: linear-gradient(to right, rgb(20, 30, 48), rgb(13, 23, 37));
+  color: #97b0df;
+  position: fixed;
+  width: 100%;
+  z-index: 5;
+}
+h2 {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 30px;
+  padding-top: 1vh;
+  padding-left: 13vh;
+}
+/* Page content */
