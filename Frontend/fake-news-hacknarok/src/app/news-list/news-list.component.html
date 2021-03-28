@@ -1,15 +1,8 @@
 <span class="fk-list-container">
-    <mat-chip-list *ngIf="displayedTags" class="chips">
-        <mat-chip class="fk-keyword-chip" *ngFor="let tag of displayedTags" color="accent" selected >{{tag.tagname}}</mat-chip>
+    <mat-chip-list *ngIf="displayedTags" [selectable]="true" class="chips">
+        <mat-chip  class="fk-keyword-chip" *ngFor="let tag of displayedTags" color="accent" >{{tag.tagname}}</mat-chip>
       </mat-chip-list>
     <app-news-list-item *ngFor="let news of displayedNews"  [newsInput]="news"></app-news-list-item>
     <mat-spinner class="chips" *ngIf="loading"></mat-spinner>
 
 </span>
-<div
-      class="search-results"
-      infiniteScroll
-      [infiniteScrollDistance]="3"
-      [infiniteScrollThrottle]="30"
-      (scrolled)="onScroll()"
-    ></div>

@@ -6,7 +6,7 @@
         <span class="fk-slider">
             <p class="fk-slider-label">Authenticity</p>
             <span><p class="fk-slider-left-label">Fake</p><p class="fk-slider-right-label">Legit</p></span>
-            <mat-slider  min="0" max="100" step="0.5" value="1.5" ></mat-slider>
+            <mat-slider (change)="authenticityChanged($event)"  min="0" max="100" step="0.5" value="50" ></mat-slider>
         </span>
         <p class="fk-date-label">Date range</p>
         <span class="fk-slider">
